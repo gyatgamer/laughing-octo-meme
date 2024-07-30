@@ -9234,3 +9234,22 @@ local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(funct
         end
     end
 end)
+
+runfunction(function()
+    local breathe = {Enabled = false}
+    breathe = GuiLibrary.ObjectsThatCanBeSaved.RuckWindow.Api.CreateOptionsButton({
+        Name = "DragonBreathe",
+        Function = function(callback)
+            if callback then 
+                task.spawn(function()
+                    repeat 
+                        task.wait(0.3) 
+                        game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("DragonBreath"):FireServer({player = game:GetService("Players").LocalPlayer})
+                    until (not breathe.Enabled)
+                end)
+            end
+        end
+    })
+end)
+[18:54]
+
